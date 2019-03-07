@@ -1,38 +1,63 @@
 def welcome
+  puts "Welcome to the Blackjack Table"
   # code #welcome here
 end
 
 def deal_card
+  return rand(1..11)
   # code #deal_card here
 end
 
-def display_card_total
+def display_card_total(card_total)
+  puts "Your cards add up to #{card_total}"
   # code #display_card_total here
 end
 
 def prompt_user
+  puts "Type 'h' to hit or 's' to stay"
   # code #prompt_user here
 end
 
 def get_user_input
+  input = gets.chomp
   # code #get_user_input here
 end
 
-def end_game
+def end_game(card_total)
+  puts "Sorry, you hit #{card_total}. Thanks for playing!"
   # code #end_game here
 end
 
+# Version 1 - First test pass, second does not
+# def initial_round
+#   return deal_card + deal_card
+#   puts display_card_total(deal_card + deal_card)
+#   # code #initial_round here
+# end
+
 def initial_round
+  card_total = (deal_card + deal_card)
+  display_card_total(card_total)
+  return card_total
   # code #initial_round here
 end
 
-def hit?
-  # code hit? here
+def hit?(card_total)
+  prompt_user
+  get_user_input
+    if get_user_input == "h"
+      return initial_round += deal_card
+    else 
+      return card_total
+  end 
 end
 
-def invalid_command
-  # code invalid_command here
-end
+# def invalid_command
+#   if get_user_input != "h" || "s"
+#     return "Please enter a valid command"
+#   else 
+#   # code invalid_command here
+# end
 
 #####################################################
 # get every test to pass before coding runner below #
